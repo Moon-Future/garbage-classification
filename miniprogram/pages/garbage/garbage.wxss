@@ -1,0 +1,147 @@
+.earth-container {
+  /* position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  /* background: url(https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/bg-green-earth.jpeg) no-repeat; */
+}
+
+.search-none {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: center;
+  color: #c0c0c0;
+  font-size: 14px;
+}
+
+.search-none .search-none-msg {
+  padding: 5px 0;
+}
+
+.search-none .search-none-add {
+  padding: 5px 0;
+  text-decoration: underline;
+}
+
+.garbage-serach {
+  position: fixed;
+  left: 0;
+  right: 0;
+  padding: 5px 0;
+  background: #F6F6F6;
+  height: 50px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.garbage-serach input {
+  width: 80%;
+  height: 30px;
+  margin: auto;
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.garbage-serach .search-cancel {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: auto;
+}
+
+.garbage-list-wrapper {
+  margin-top: 60px;
+}
+
+.garbage-type-wrapper {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.garbage-type-wrapper image {
+  height: 100px;
+  box-sizing: border-box;
+}
+
+.garbage-type-wrapper image.active-type {
+  scale: 1.1;
+  border: 1px solid yellowgreen;
+}
+
+.garbage-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.garbage-item {
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
+  /* max-height: 200px;
+  overflow: hidden; */
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.garbage-item .garbage-img {
+  display: flex;
+  justify-content: center;
+}
+
+.garbage-img image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.garbage-item .garbage-name {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.garbage-item .garbage-type {
+  font-weight: bold;
+}
+
+.garbage-item .garbage-descr {
+  /* text-align: left; */
+  color: #b3b3b3;
+}
+
+.search-container {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #F6F6F6;
+  /* overflow: scroll; */
+}
+
+.search-container .search-item {
+  display: flex;
+  padding: 5px 15px;
+}
+
+.search-item image {
+  width: 70px;
+  height: 70px;
+}
+
+.search-item .search-info {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: center;
+  margin-left: 20px;
+}

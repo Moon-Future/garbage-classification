@@ -1,0 +1,41 @@
+<view class="green-earth">
+  <view class="garbage-serach">
+    <input type="text" value="{{ keyWord }}" placeholder="搜索" bindfocus="bindfocus" bindblur="bindblur" bindconfirm="bindconfirm" />
+    <text class="search-cancel" wx:if="{{ searchFlag }}" bindtap="cancelSearch">取消</text>
+  </view>
+
+  <scroll-view scroll-y style="height:{{scrollviewHeight}}px" class="search-container" wx:if="{{ searchFlag }}">
+    <view wx:for="{{ searchContent }}" wx:key="index" class="search-item">
+      <image src="{{ item.image }}" />
+      <view class="search-info">
+        <text>{{ item.name }}</text>
+        <text class="{{ garbageType[item.type].class }}">{{ garbageType[item.type].name }}</text>
+      </view>
+    </view>
+    <view class="search-none" wx:if="{{ searchContent.length === 0 && !searchFocus }}">
+      <text class="search-none-msg">没有找到</text>
+      <!--
+      <navigator url="../addGarbage/addGarbage" open-type="navigate"  class="search-none-add">
+        <text>添加+</text>
+      </navigator>
+      -->
+    </view>
+  </scroll-view>
+
+  <view class="garbage-list-wrapper">
+    <view class="garbage-type-wrapper">
+      <image wx:for="{{ typeImgList }}" wx:key="index" src="{{ item.image }}" class="{{ activeType == item.type ? 'active-type' : '' }}" data-type="{{ item.type }}" bindtap="selectType" />
+    </view>
+
+    <view class="garbage-group">
+      <view class="garbage-item" data-id="{{ item._id }}" wx:for="{{ garbageData }}" wx:key="index" bindtap="goDetail">
+        <view class="garbage-img">
+          <image src="{{ item.image }}" />
+        </view>
+        <text class="garbage-name">{{ item.name }}</text>
+        <text class="garbage-type {{ garbageType[item.type].class }}">{{ garbageType[item.type].name }}</text>
+        <text class="garbage-descr">{{ item.descr }}</text>
+      </view>
+    </view>
+  </view>
+</view>

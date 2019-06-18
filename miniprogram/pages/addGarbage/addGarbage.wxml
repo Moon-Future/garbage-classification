@@ -1,0 +1,31 @@
+<view class="add-container">
+  <view class="add-item add-image">
+    <image src="http://s.lvsediqiu.com/uploads/wiki/452.png"></image>
+  </view>
+
+  <view class="add-item">
+    <label class="required">垃圾</label>
+    <input type="text" data-field="name" bindblur="bindblur" />
+  </view>
+
+  <view class="add-item">
+    <label class="required">分类</label>
+    <picker mode="selector" bindchange="bindPickerChange" value="{{ index }}" range-key="name" range="{{ garbageType }}">
+      <view>
+        {{ garbageType[index].name || '请选择' }}
+      </view>
+    </picker>
+  </view>
+
+  <view class="add-item">
+    <label>描述</label>
+    <textarea data-field="descr" bindblur="bindblur" />
+  </view>
+
+  <view class="add-item">
+    <label>特性</label>
+    <textarea data-field="feature" bindblur="bindblur" />
+  </view>
+
+  <button type="primary" class="add-submit" loading="{{ loading }}" bindtap="submit" >提交</button>
+</view>

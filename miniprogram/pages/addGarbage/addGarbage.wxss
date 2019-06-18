@@ -1,0 +1,45 @@
+.add-item {
+  width: 95%;
+  margin: 10px auto;
+}
+
+.required::after {
+  content: '*';
+  color: red;
+}
+
+.add-image {
+  text-align: center;
+}
+
+.add-item image {
+  width: 100px;
+  height: 100px;
+}
+
+.add-item label {
+  margin: 5px 0;
+}
+
+.add-item input, .add-item picker, .add-item textarea {
+  margin: 5px auto;
+  font-size: 14px;
+  background: #ffffff;
+  padding: 0 3px;
+  width: initial;
+}
+
+.add-item input, .add-item picker {
+  height: 30px;
+  line-height: 30px;
+}
+
+.add-item textarea {
+  height: 100px;
+  line-height: 20px;
+}
+
+.add-submit {
+  width: 95%;
+  margin: 20px auto;
+}

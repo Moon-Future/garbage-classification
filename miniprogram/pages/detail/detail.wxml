@@ -1,0 +1,12 @@
+<view class="detail-container">
+  <image class="garbage-img" src="{{ garbage.image }}" />
+  <text>{{ garbage.name }}</text>
+  <text class="{{ garbageType[garbage.type].class }}">{{ garbageType[garbage.type].name }}</text>
+  <text>{{ garbage.descr }}</text>
+  <view class="bin-container">
+    <image class="bin-img" wx:key="index" wx:for="{{ garbageBin }}" src="{{ garbage.type == item.type ? item.binOn : item.binOff }}" />
+  </view>
+  <view class="bin-container">
+    <image class="bin-img" wx:key="index" wx:for="{{ garbageBinAlias }}" src="{{ garbage.type == item.type ? item.binOn : item.binOff }}" />
+  </view>
+</view>
