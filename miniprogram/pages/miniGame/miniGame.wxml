@@ -1,0 +1,31 @@
+<view class="game-container">
+  <view class="game-top">
+    <view class="garbage-info">
+      <image class="garbage-img" src="{{ garbage.image }}" />
+      <text>{{ garbage.name }}</text>
+    </view>
+    <view class="game-icon">
+      <text class="iconfont icon-wen" bindtap="answer"></text>
+      <text class="iconfont icon-next" bindtap="next"></text>
+    </view>
+  </view>
+
+  <view class="{{ right ? '' : 'visibility-h' }}" style="display:flex;flex-flow:column">
+    <text class="{{ garbageType[garbage.type].class }}">{{ garbageType[garbage.type].name }}</text>
+    <text>{{ garbage.descr }}</text>
+  </view>
+  <view wx:if="{{ garbage.similar }}">
+    <text class="garbage-similar">同类(别名)：{{ garbage.similar }}</text>
+  </view>
+  <view wx:if="{{ garbage.feature }}">
+    <text class="garbage-feature">特性：{{ garbage.feature }}</text>
+  </view>
+  <view wx:if="{{ garbage.name }}">
+    <view class="bin-container">
+      <image class="bin-img" wx:key="index" wx:for="{{ garbageBin }}" data-type="{{ item.type }}" src="{{ garbage.type == item.type && right ? item.binOn : item.binOff }}" bindtap="selectBin" />
+    </view>
+    <view class="bin-container">
+      <image class="bin-img" wx:key="index" wx:for="{{ garbageBinAlias }}" data-type="{{ item.type }}" src="{{ garbage.type == item.type && right ? item.binOn : item.binOff }}" bindtap="selectBin" />
+    </view>
+  </view>
+</view>

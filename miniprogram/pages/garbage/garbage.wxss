@@ -36,27 +36,42 @@ Page {
   position: fixed;
   left: 0;
   right: 0;
-  padding: 5px 0;
   background: #F6F6F6;
-  height: 50px;
+  height: 40px;
+  line-height: 40px;
   box-sizing: border-box;
   display: flex;
 }
 
 .garbage-serach input {
-  width: 75%;
+  flex: 1;
   height: 30px;
-  margin: auto;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
   font-size: 14px;
   padding: 0 10px;
+  margin: 5px 0;
+}
+
+.garbage-serach input.nosearch {
+  margin-right: 10px;
 }
 
 .garbage-serach .search-cancel {
   font-size: 16px;
   color: #b3b3b3;
-  margin: auto;
+  margin: 0 10px;
+}
+
+.top-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.top-wrapper .garbage-game {
+  font-size: 26px;
+  margin: 0 10px;
+  color: #f3b41b;
 }
 
 .garbage-list-wrapper {

@@ -1,4 +1,3 @@
-/* miniprogram/pages/detail/detail.wxss */
 .detail-container {
   display: flex;
   flex-flow: column;

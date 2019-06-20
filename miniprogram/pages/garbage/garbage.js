@@ -45,7 +45,6 @@ Page({
   },
 
   getData() {
-    // return
     wx.showLoading({
       title: '加载中'
     })
@@ -194,10 +193,9 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
+  goToMiniGame() {
+    wx.navigateTo({
+      url: '../miniGame/miniGame'
+    })
+  }
 })

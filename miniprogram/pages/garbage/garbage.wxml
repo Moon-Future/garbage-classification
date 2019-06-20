@@ -1,7 +1,10 @@
 <view class="green-earth">
   <view class="garbage-serach">
-    <input type="text" value="{{ keyWord }}" placeholder="搜索" bindfocus="bindfocus" bindblur="bindblur" bindconfirm="bindconfirm" />
-    <text class="search-cancel" wx:if="{{ searchFlag }}" bindtap="cancelSearch">取消</text>
+    <view class="top-wrapper">
+      <text class="iconfont icon-game garbage-game" bindtap="goToMiniGame"></text>
+      <input type="text" class="{{ searchFlag ? '' : 'nosearch' }}" value="{{ keyWord }}" placeholder="搜索" bindfocus="bindfocus" bindblur="bindblur" bindconfirm="bindconfirm" />
+      <text class="search-cancel" hidden="{{ !searchFlag }}" bindtap="cancelSearch">取消</text>
+    </view>
   </view>
 
   <scroll-view scroll-y style="height:{{scrollviewHeight}}px" class="search-container" wx:if="{{ searchFlag }}">
