@@ -26,3 +26,7 @@
   width: 25%;
   height: 150px;
 }
+
+.garbage-similar, .garbage-feature {
+  color: #ff8a5c;
+}

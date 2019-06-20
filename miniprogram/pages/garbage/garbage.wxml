@@ -5,7 +5,7 @@
   </view>
 
   <scroll-view scroll-y style="height:{{scrollviewHeight}}px" class="search-container" wx:if="{{ searchFlag }}">
-    <view wx:for="{{ searchContent }}" wx:key="index" class="search-item">
+    <view wx:for="{{ searchContent }}" data-detail="{{ item }}" wx:key="index" class="search-item" bindtap="goDetail">
       <image src="{{ item.image }}" />
       <view class="search-info">
         <text>{{ item.name }}</text>
@@ -22,20 +22,25 @@
     </view>
   </scroll-view>
 
-  <view class="garbage-list-wrapper">
+  <view class="garbage-list-wrapper {{ searchFlag ? 'display-n' : '' }}">
     <view class="garbage-type-wrapper">
-      <image wx:for="{{ typeImgList }}" wx:key="index" src="{{ item.image }}" class="{{ activeType == item.type ? 'active-type' : '' }}" data-type="{{ item.type }}" bindtap="selectType" />
+      <image wx:for="{{ typeImgList }}" wx:key="index" src="{{ item.image }}" class="{{ activeType == item.type && !searchFlag ? 'active-type' : '' }}" data-type="{{ item.type }}" bindtap="selectType" />
     </view>
 
     <view class="garbage-group">
-      <view class="garbage-item" data-id="{{ item._id }}" wx:for="{{ garbageData }}" wx:key="index" bindtap="goDetail">
+      <view class="{{ tableShow ? 'garbage-item-table' : 'garbage-item-list' }}" data-detail="{{ item }}" wx:for="{{ garbageData }}" wx:key="index" bindtap="goDetail">
         <view class="garbage-img">
           <image src="{{ item.image }}" />
         </view>
         <text class="garbage-name">{{ item.name }}</text>
         <text class="garbage-type {{ garbageType[item.type].class }}">{{ garbageType[item.type].name }}</text>
-        <text class="garbage-descr">{{ item.descr }}</text>
+        <text class="garbage-descr" wx:if="{{ tableShow }}">{{ item.descr }}</text>
       </view>
     </view>
+  </view>
+
+  <view class="icon-container" wx:if="{{ !searchFlag }}">
+    <text class="iconfont {{ tableShow ? 'icon-table' : 'icon-list' }}" bindtap="switchModel"></text>
+    <text class="iconfont icon-top" wx:if="{{ topShow }}" bindtap="scrollToTop"></text>
   </view>
 </view>

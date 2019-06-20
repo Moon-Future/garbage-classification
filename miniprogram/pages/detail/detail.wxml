@@ -3,6 +3,12 @@
   <text>{{ garbage.name }}</text>
   <text class="{{ garbageType[garbage.type].class }}">{{ garbageType[garbage.type].name }}</text>
   <text>{{ garbage.descr }}</text>
+  <view wx:if="{{ garbage.similar }}">
+    <text class="garbage-similar">同类(别名)：{{ garbage.similar }}</text>
+  </view>
+  <view wx:if="{{ garbage.feature }}">
+    <text class="garbage-feature">特性：{{ garbage.feature }}</text>
+  </view>
   <view class="bin-container">
     <image class="bin-img" wx:key="index" wx:for="{{ garbageBin }}" src="{{ garbage.type == item.type ? item.binOn : item.binOff }}" />
   </view>

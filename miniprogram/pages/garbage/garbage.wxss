@@ -1,4 +1,9 @@
-.earth-container {
+Page {
+  height: 100%;
+}
+
+.green-earth {
+  height: 100%;
   /* position: fixed;
   top: 0;
   bottom: 0;
@@ -39,7 +44,7 @@
 }
 
 .garbage-serach input {
-  width: 80%;
+  width: 75%;
   height: 30px;
   margin: auto;
   border: 1px solid #c0c0c0;
@@ -49,13 +54,17 @@
 }
 
 .garbage-serach .search-cancel {
-  font-size: 14px;
+  font-size: 16px;
   color: #b3b3b3;
   margin: auto;
 }
 
 .garbage-list-wrapper {
   margin-top: 60px;
+}
+
+.display-n {
+  display: none;
 }
 
 .garbage-type-wrapper {
@@ -65,12 +74,14 @@
 
 .garbage-type-wrapper image {
   height: 100px;
+  width: 25%;
+  margin: 0 1px;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .garbage-type-wrapper image.active-type {
-  scale: 1.1;
-  border: 1px solid yellowgreen;
+  border: 3px solid #28c3d4;
 }
 
 .garbage-group {
@@ -78,12 +89,10 @@
   flex-wrap: wrap;
 }
 
-.garbage-item {
+.garbage-item-table {
   width: 50%;
   min-width: 50%;
   max-width: 50%;
-  /* max-height: 200px;
-  overflow: hidden; */
   display: flex;
   flex-flow: column;
   text-align: center;
@@ -93,7 +102,17 @@
   box-sizing: border-box;
 }
 
-.garbage-item .garbage-img {
+.garbage-item-list {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.garbage-item-table .garbage-img {
   display: flex;
   justify-content: center;
 }
@@ -104,16 +123,26 @@
   border-radius: 50%;
 }
 
-.garbage-item .garbage-name {
+.garbage-item-list .garbage-img image {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.garbage-item-table .garbage-name {
   font-size: 16px;
   margin-top: 10px;
 }
 
-.garbage-item .garbage-type {
+.garbage-item-list .garbage-name {
+  margin-right: 20px;
+}
+
+.garbage-item-table .garbage-type {
   font-weight: bold;
 }
 
-.garbage-item .garbage-descr {
+.garbage-item-table .garbage-descr {
   /* text-align: left; */
   color: #b3b3b3;
 }
@@ -142,6 +171,22 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   margin-left: 20px;
+}
+
+.icon-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.icon-container text {
+  color: #83cdd9;
+  font-size: 36px;
+  opacity: 0.8;
 }

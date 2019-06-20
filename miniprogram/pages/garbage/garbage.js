@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
   data: {
     searchFlag: false,
@@ -21,7 +22,10 @@ Page({
     garbageData: [],
     pageNum: 0,
     pageSize: 30,
-    total: 0
+    total: 0,
+    tableShow: false,
+    topShow: false,
+    scrollTop: 0
   },
 
   onLoad() {
@@ -30,9 +34,18 @@ Page({
       scrollviewHeight: wh - 50
     })
     this.getData()
+
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
+
+  bindblur() {
+
   },
 
   getData() {
+    // return
     wx.showLoading({
       title: '加载中'
     })
@@ -47,7 +60,7 @@ Page({
     }).then(res => {
       const result = res.result
       this.setData({
-        garbageData: this.data.activeType == -1 ? this.data.garbageData.concat(result.garbageData) : result.garbageData,
+        garbageData: this.data.activeType == -1 && this.data.pageNum != 0 ? this.data.garbageData.concat(result.garbageData) : result.garbageData,
         total: result.total
       })
       wx.hideLoading()
@@ -67,6 +80,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if (this.data.searchFlag) {
+      return
+    }
     const pageNum = this.data.pageNum + 1
     if (pageNum > Math.ceil(this.data.total / this.data.pageSize) - 1) {
       return;
@@ -99,6 +115,9 @@ Page({
         searchContent: res.result.searchContent,
         searchFocus: false
       })
+      if (this.data.searchContent.length === 0) {
+        app.globalData.addName = e.detail.value
+      }
     }).catch(console.error)
   },
 
@@ -107,6 +126,10 @@ Page({
       searchFlag: false,
       keyWord: '',
       searchContent: []
+    })
+    wx.pageScrollTo({
+      scrollTop: this.data.scrollTop,
+      duration: 0
     })
   },
 
@@ -127,8 +150,54 @@ Page({
   },
 
   goDetail(e) {
+    app.globalData.garbageDetail = e.currentTarget.dataset.detail
     wx.navigateTo({
-      url: '../detail/detail?id=' + e.currentTarget.dataset.id
+      url: '../detail/detail'
     })
-  }
+  },
+
+  // 显示方式
+  switchModel() {
+    this.setData({
+      tableShow: !this.data.tableShow
+    })
+  },
+
+  onPageScroll(e) {
+    if (e.scrollTop > 2000 && !this.data.topShow) {
+      this.setData({
+        topShow: true
+      })
+    }
+    if (e.scrollTop < 2000 && this.data.topShow) {
+      this.setData({
+        topShow: false
+      })
+    }
+    if (!this.data.searchFlag) {
+      this.setData({
+        scrollTop: e.scrollTop
+      })
+    }
+  },
+
+  scrollToTop() {
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
 })
