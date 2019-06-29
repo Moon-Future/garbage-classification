@@ -76,7 +76,7 @@ Page {
 
 .garbage-list-wrapper {
   margin-top: 60px;
-  margin-bottom: 48px;
+  padding-bottom: 48px;
 }
 
 .display-n {
@@ -205,4 +205,58 @@ Page {
   color: #83cdd9;
   font-size: 36px;
   opacity: 0.8;
+}
+
+.search-record-wrapper {
+  font-size: 14px;
+  padding: 10px;
+}
+
+.search-hot .search-hot-title, .search-history .search-history-title {
+  color: #7A7E83;
+}
+
+.search-hot {
+  margin-bottom: 10px;
+}
+
+.search-hot-item-wrapper {
+  margin-top: 5px;
+}
+
+.search-hot-item {
+  display: inline-block;
+  padding: 0 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: 1px solid #7A7E83;
+  background: #7A7E83;
+  color: #ffffff;
+}
+
+.search-history {
+  padding-bottom: 48px;
+}
+
+.search-history-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-history-title .iconfont {
+  margin: auto 0;
+  font-size: 16px;
+}
+
+.search-history-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #7A7E83;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-history-item .iconfont {
+  margin: auto 0;
+  color: red;
 }

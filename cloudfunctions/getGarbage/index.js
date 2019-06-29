@@ -12,8 +12,8 @@ function random(lower, upper) {
 // 云函数入口函数
 exports.main = async (event, context) => {
   let condition = event.condition || {}
-  if (condition.check === undefined) {
-    condition.check = _.neq(0)
+  if (condition.verify === undefined) {
+    condition.verify = _.neq(0)
   }
   const countResult = await db.collection('garbage').where(condition).count()
   const total = countResult.total

@@ -27,5 +27,10 @@
     <textarea data-field="feature" bindblur="bindblur" />
   </view>
 
+  <view class="add-item">
+    <label>类似垃圾</label>
+    <textarea data-field="similar" bindblur="bindblur" />
+  </view>
+
   <button type="primary" class="add-submit" loading="{{ loading }}" bindtap="submit" >提交</button>
 </view>

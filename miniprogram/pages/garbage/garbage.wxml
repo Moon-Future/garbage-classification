@@ -8,18 +8,36 @@
   </view>
 
   <scroll-view scroll-y style="height:{{scrollviewHeight}}px" class="search-container" wx:if="{{ searchFlag }}">
-    <view wx:for="{{ searchContent }}" data-detail="{{ item }}" wx:key="index" class="search-item" bindtap="goDetail">
+    <view wx:if="{{ !searchFocus }}" wx:for="{{ searchContent }}" data-detail="{{ item }}" wx:key="index" class="search-item" bindtap="goDetail">
       <image src="{{ item.image }}" />
       <view class="search-info">
         <text>{{ item.name }}</text>
         <text class="{{ garbageType[item.type].class }}">{{ garbageType[item.type].name }}</text>
       </view>
     </view>
+    <view class="search-record-wrapper" wx:if="{{ searchFocus }}">
+      <view class="search-hot">
+        <text class="search-hot-title">大家都在搜</text>
+        <view class="search-hot-item-wrapper">
+          <view class="search-hot-item" wx:for="{{ hotSearch }}" wx:key="index">
+            <text data-name="{{ item.name }}" bindtap="bindconfirm">{{ item.name }}</text>
+          </view>
+        </view>
+      </view>
+      <view class="search-history">
+        <view class="search-history-title">
+          <text>历史记录</text>
+          <text class="iconfont icon-del" bindtap="delAllHistory"></text>
+        </view>
+        <view class="search-history-item" wx:for="{{ searchHistory }}" wx:key="index" data-name="{{ item }}" bindtap="bindconfirm">
+          <text>{{ item }}</text>
+          <text class="iconfont icon-delete" data-name="{{ item }}" catchtap="delRowHistory"></text>
+        </view>
+      </view>
+    </view>
     <view class="search-none" wx:if="{{ searchContent.length === 0 && !searchFocus }}">
       <text class="search-none-msg">没有找到</text>
-      <navigator url="../addGarbage/addGarbage" open-type="navigate"  class="search-none-add">
-        <text>添加+</text>
-      </navigator>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">添加+</button>
       <!--
       <navigator url="../addGarbage/addGarbage" open-type="navigate"  class="search-none-add">
         <text>添加+</text>

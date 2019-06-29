@@ -1,3 +1,12 @@
-<view>
-  <text>verify</text>
+<view class="verify-container">
+  <view class="verify-wrapper" wx:for="{{ garbageData }}" wx:key="index">
+    <view class="verify-item-info">
+      <image src="{{ item.image }}" />
+      <text>{{ item.name }}</text>
+    </view>
+    <view class="verify-item-type">
+      <text class="{{ garbageType[item.type].class }}">{{ garbageType[item.type].name }}</text>
+      <text class="iconfont icon-wenhao"></text>
+    </view>
+  </view>
 </view>

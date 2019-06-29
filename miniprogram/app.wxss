@@ -26,7 +26,6 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-bottom: 48px;
 }
 
 .disable {
@@ -35,17 +34,55 @@ page {
 
 
 .color-recyclable {
-  color: #366aba;
+  color: #004883;
 }
+
+.color-recyclable-bg {
+  background: #004883;
+  color: #ffffff;
+  padding: 0 5px;
+}
+
+.color-wet {
+  color: #653f36;
+}
+
 .color-kitchen {
   color: #53c968;
 }
+
+.color-kitchen-bg {
+  background: #53c968;
+  color: #ffffff;
+  padding: 0 5px;
+}
+
 .color-harmful {
-  color: #e6222b;
+  color: #e53420;
 }
+
+.color-harmful-bg {
+  background: #e53420;
+  color: #ffffff;
+  padding: 0 5px;
+}
+
 .color-other {
-  color: #5f5e5e;
+  color: #2c2b27;
 }
+
+.color-other-bg {
+  background: #2c2b27;
+  color: #ffffff;
+  padding: 0 5px;
+}
+
 .color-other1 {
   color: #ffe837;
+}
+
+.color-other1-bg {
+  background: #ffe837;
+  color: #ffffff;
+  padding: 0 5px;
 }

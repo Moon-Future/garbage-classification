@@ -11,13 +11,19 @@
   color: #17223b;
 }
 
+.question-wrapper {
+  padding-bottom: 48px;
+}
+
 .question-item {
   display: flex;
   height: 60px;
-  font-size: 14px;
+  padding: 20px 0;
+  font-size: 16px;
   justify-content: flex-start;
   overflow: hidden;
   margin-bottom: 5px;
+  background: #ffffff;
 }
 
 .question-item-image {
@@ -39,7 +45,6 @@
 }
 
 .question-item-info .question-item-summary {
-  width: 250px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

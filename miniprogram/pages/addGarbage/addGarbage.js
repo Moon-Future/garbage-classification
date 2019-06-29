@@ -22,7 +22,8 @@ Page({
       similar: '', // 同类产品，别名
       feature: '',  // 特性
       search: 0,  // 查询热度
-      check: 0  // 待审核
+      verify: 0,  // 待审核,
+      userInfo: {}
     },
     loading: false
   },
@@ -106,13 +107,17 @@ Page({
       case 'feature':
         this.setData({ 'subData.feature': val })
         break
+      case 'similar':
+        this.setData({ 'subData.similar': val })
+        break
     }
   },
   submit() {
-    if (this.data.loading) {
+    var that = this;
+    if (that.data.loading) {
       return false;
     }
-    let subData = this.data.subData
+    let subData = that.data.subData
     if (subData.name === '' || subData.type == -1) {
       wx.showToast({
         title: '请完善表单',
@@ -120,21 +125,32 @@ Page({
       })
       return false
     }
-    this.setData({loading: true})
+    that.setData({loading: true})
+    that.setData({
+      'subData.userInfo': app.globalData.userInfo
+    })
     wx.cloud.callFunction({
       name: 'addGarbage',
-      data: subData
-    }).then(res => {
-      this.setData({loading: false})
-      wx.showToast({
-        title: res.result.msg,
-        icon: 'none',
-        success: function() {
-          wx.navigateTo({
-            url: '../garbage/garbage'
-          })
-        }
-      })
+      data: subData,
+      success: function(res) {
+        that.setData({loading: false})
+        wx.showToast({
+          title: res.result.msg,
+          icon: 'success',
+          success: function() {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        })
+      },
+      fail: function(res) {
+        that.setData({loading: false})
+        wx.showToast({
+          title: '提交失败，请检查网络',
+          icon: 'none',
+        })
+      }
     })
   }
 })

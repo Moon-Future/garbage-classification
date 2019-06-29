@@ -1,5 +1,5 @@
 {
-  "name": "addGarbage",
+  "name": "getHotSearch",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

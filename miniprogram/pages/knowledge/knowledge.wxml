@@ -7,7 +7,7 @@
       <view class="question-item-info">
         <text class="question-item-title color-title">{{ item.title }}</text>
         <text class="question-item-answer color-answer">{{ item.answer }}</text>
-        <text class="question-item-summary color-summary">{{ item.summary }}</text>
+        <text class="question-item-summary color-summary" style="width: {{ summaryWidth }}px">{{ item.summary }}</text>
       </view>
     </view>
   </view>

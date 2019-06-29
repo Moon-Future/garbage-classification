@@ -8,7 +8,8 @@ Page({
     pageNum: 0,
     pageSize: 10,
     total: 0,
-    list: []
+    list: [],
+    summaryWidth: 250
   },
 
   /**
@@ -16,6 +17,15 @@ Page({
    */
   onLoad: function (options) {
     this.getData()
+
+    let ww = wx.getSystemInfoSync().windowWidth
+    this.setData({
+      summaryWidth: ww - 70
+    })
+
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
 
   onShow: function () {
@@ -40,13 +50,16 @@ Page({
     }).then(res => {
       const result = res.result
       result.knowledgeData.forEach(item => {
-        item.image = 'https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/recyclable.jpg'
+        item.image = item.image || 'https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/green-earth.jpg'
       })
       this.setData({
         list: this.data.pageNum != 0 ? this.data.list.concat(result.knowledgeData) : result.knowledgeData,
         total: result.total
       })
       wx.hideLoading()
+    }).catch(err => {
+      wx.hideLoading()
+      console.log(err)
     })
   },
 

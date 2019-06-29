@@ -6,10 +6,10 @@ Page({
    */
   data: {
     garbageType: {
-      0: {name: '可回收物', class: 'color-recyclable'},
-      1: {name: '厨余垃圾(湿垃圾)', class: 'color-kitchen'},
-      2: {name: '有害垃圾', class: 'color-harmful'},
-      3: {name: '其他垃圾(干垃圾)', class: 'color-other'},
+      0: {name: '可回收物', class: 'color-recyclable-bg'},
+      1: {name: '厨余垃圾(湿垃圾)', class: 'color-kitchen-bg'},
+      2: {name: '有害垃圾', class: 'color-harmful-bg'},
+      3: {name: '其他垃圾(干垃圾)', class: 'color-other-bg'},
     },
     garbageData: [],
     pageNum: 0,
@@ -22,6 +22,10 @@ Page({
    */
   onLoad: function (options) {
     this.getData()
+
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
 
   onShow: function () {
@@ -37,7 +41,7 @@ Page({
     wx.showLoading({
       title: '加载中'
     })
-    const condition = {check: 0}
+    const condition = {verify: 0}
     wx.cloud.callFunction({
       name: 'getGarbage',
       data: {
@@ -46,7 +50,6 @@ Page({
         condition: condition
       }
     }).then(res => {
-      console.log(res)
       const result = res.result
       this.setData({
         garbageData: this.data.activeType == -1 && this.data.pageNum != 0 ? this.data.garbageData.concat(result.garbageData) : result.garbageData,

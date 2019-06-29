@@ -73,6 +73,9 @@ Page({
         garbage: result.garbageData && result.garbageData[0] || [],
       })
       wx.hideLoading()
+    }).catch(err => {
+      wx.hideLoading()
+      console.log(err)
     })
   },
 })

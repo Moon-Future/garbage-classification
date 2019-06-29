@@ -3,7 +3,7 @@ Page({
   data: {
     searchFlag: false,
     searchContent: [],
-    scrollviewHieght: 458,
+    scrollviewHeight: 458,
     searchFocus: false,
     keyWord: '',
     garbageType: {
@@ -25,15 +25,24 @@ Page({
     total: 0,
     tableShow: false,
     topShow: false,
-    scrollTop: 0
+    scrollTop: 0,
+    searchHistory: [],
+    hotSearch: [],
+    searchFirst: true
   },
 
   onLoad() {
+    var searchHistory = wx.getStorageSync('searchHistory')
+    this.setData({
+      searchHistory: searchHistory || []
+    })
+
     let wh = wx.getSystemInfoSync().windowHeight
     this.setData({
       scrollviewHeight: wh - 50
     })
     this.getData()
+    this.getSearch()
 
     wx.showShareMenu({
       withShareTicket: true
@@ -54,7 +63,6 @@ Page({
   },
 
   getData() {
-    return
     wx.showLoading({
       title: '加载中'
     })
@@ -73,6 +81,11 @@ Page({
         total: result.total
       })
       wx.hideLoading()
+    }).catch(err => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '网络拥堵，请稍后重试'
+      })
     })
   },
 
@@ -109,25 +122,53 @@ Page({
     })
   },
 
+  getSearch() {
+    if (this.data.searchFirst) {
+      wx.cloud.callFunction({
+        name: 'getHotSearch'
+      }).then(res => {
+        const result = res.result
+        this.setData({
+          hotSearch: result.hotSearch,
+          searchFirst: false
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  },
+
   bindconfirm(e) {
+    var dataset = e.currentTarget.dataset
+    var keyWord = dataset.name || e.detail.value.trim()
+    if (this.data.searchHistory.indexOf(keyWord) === -1) {
+      this.data.searchHistory.push(keyWord)
+      this.setHistory(this.data.searchHistory)
+    }
+    this.setData({
+      keyWord: keyWord,
+      searchFocus: false
+    })
     wx.showLoading({
       title: '加载中',
     })
     wx.cloud.callFunction({
       name: 'searchGarbage',
       data: {
-        keyWord: e.detail.value
+        keyWord: keyWord
       }
     }).then(res => {
       wx.hideLoading()
       this.setData({
-        searchContent: res.result.searchContent,
-        searchFocus: false
+        searchContent: res.result.searchContent
       })
       if (this.data.searchContent.length === 0) {
-        app.globalData.addName = e.detail.value
+        app.globalData.addName = keyWord.trim()
       }
-    }).catch(console.error)
+    }).catch(err => {
+      wx.hideLoading()
+      console.log(err)
+    })
   },
 
   cancelSearch() {
@@ -207,5 +248,33 @@ Page({
     wx.navigateTo({
       url: '../miniGame/miniGame'
     })
+  },
+
+  getUserInfo(e) {
+    var userInfo = e.detail.userInfo;
+    if (userInfo) {
+      app.globalData.userInfo = userInfo;
+      wx.navigateTo({
+        url: '../addGarbage/addGarbage'
+      })
+    }
+  },
+
+  setHistory(data) {
+    this.setData({
+      searchHistory: data
+    })
+    wx.getStorageSync('searchHistory', data)
+  },
+
+  delAllHistory() {
+    this.setHistory([])
+  },
+
+  delRowHistory(e) {
+    var name = e.currentTarget.dataset.name
+    var searchHistory = this.data.searchHistory;
+    searchHistory.splice(searchHistory.indexOf(name), 1)
+    this.setHistory(searchHistory)
   }
 })

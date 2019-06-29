@@ -10,5 +10,5 @@ exports.main = async (event, context) => {
     data: event
   })
 
-  return {msg: '提交成功，请等待审核，谢谢！'}
+  return {msg: '审核中，谢谢'}
 }

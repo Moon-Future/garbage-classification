@@ -30,6 +30,28 @@ exports.main = async (event, context) => {
     check: _.neq(0)
   })).get()
 
+
+  const search = await db.collection('hot-search').where({
+    name: event.keyWord
+  }).get()
+  const searchData = search.data
+  console.log(searchData)
+  if (searchData.length === 0) {
+    await db.collection('hot-search').add({
+      data: {
+        name: event.keyWord,
+        verify: 0,
+        count: 1
+      }
+    })
+  } else {
+    await db.collection('hot-search').doc(searchData[0]._id).update({
+      data: {
+        count: Number(searchData[0].count) + 1
+      }
+    })
+  }
+
   return {
     searchContent: searchContent.data
   }

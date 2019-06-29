@@ -6,28 +6,28 @@ Component({
     list: [
       {
         pagePath: "/pages/garbage/garbage",
-        iconPath: '/images/pig.png',
-        selectedIconPath: '/images/pig.png',
+        iconPath: '/images/searchlist.png',
+        selectedIconPath: '/images/searchlist-active.png',
         text: "查询"
       },
       {
         pagePath: "/pages/knowledge/knowledge",
-        iconPath: '/images/pig.png',
-        selectedIconPath: '/images/pig.png',
+        iconPath: '/images/knowledge.png',
+        selectedIconPath: '/images/knowledge-active.png',
         text: "小知识"
       },
       {
         pagePath: "/pages/verify/verify",
-        iconPath: '/images/pig.png',
-        selectedIconPath: '/images/pig.png',
+        iconPath: '/images/verify.png',
+        selectedIconPath: '/images/verify-active.png',
         text: "审核中"
       },
-      {
-        pagePath: "/pages/miniGame/miniGame",
-        iconPath: '/images/pig.png',
-        selectedIconPath: '/images/pig.png',
-        text: "我的"
-      }
+      // {
+      //   pagePath: "/pages/miniGame/miniGame",
+      //   iconPath: '/images/user.png',
+      //   selectedIconPath: '/images/user-active.png',
+      //   text: "我的"
+      // }
     ]
   },
   attached() {
