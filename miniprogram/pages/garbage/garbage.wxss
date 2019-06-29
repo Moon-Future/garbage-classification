@@ -76,6 +76,7 @@ Page {
 
 .garbage-list-wrapper {
   margin-top: 60px;
+  margin-bottom: 48px;
 }
 
 .display-n {
@@ -194,7 +195,7 @@ Page {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 20px;
+  bottom: 50px;
   display: flex;
   justify-content: space-between;
   padding: 0 20px;

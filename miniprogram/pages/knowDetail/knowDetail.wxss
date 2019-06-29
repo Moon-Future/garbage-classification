@@ -1,0 +1,8 @@
+.konw-detail-wrapper {
+  padding: 10px;
+}
+
+.konw-detail-wrapper view {
+  padding: 5px 0;
+  font-size: 14px;
+}

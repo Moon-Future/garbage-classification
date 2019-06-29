@@ -1,0 +1,5 @@
+<import src="../../component/wxParse/wxParse.wxml"/>
+
+<view class="konw-detail-wrapper">
+  <template is="wxParse" data="{{wxParseData:know.nodes}}"/>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tab-bar": "../../component/tabBar/tabBar"
+  },
+  "navigationBarTitleText": "小知识"
+}

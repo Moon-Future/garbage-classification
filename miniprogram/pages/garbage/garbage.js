@@ -40,11 +40,21 @@ Page({
     })
   },
 
+  onShow: function () {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
+
   bindblur() {
 
   },
 
   getData() {
+    return
     wx.showLoading({
       title: '加载中'
     })

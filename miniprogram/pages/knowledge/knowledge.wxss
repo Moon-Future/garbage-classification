@@ -1,0 +1,46 @@
+.color-title {
+  color: #fa4e68;
+}
+
+.color-answer {
+  color: #010059;
+  font-weight: bold;
+}
+
+.color-descr {
+  color: #17223b;
+}
+
+.question-item {
+  display: flex;
+  height: 60px;
+  font-size: 14px;
+  justify-content: flex-start;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.question-item-image {
+  margin: 0 5px;
+}
+
+.question-item-image image {
+  width: 60px;
+  height: 60px;
+}
+
+.question-item-info {
+  display: flex;
+  flex-flow: column;
+}
+
+.question-item-info text {
+  height: 20px;
+}
+
+.question-item-info .question-item-summary {
+  width: 250px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

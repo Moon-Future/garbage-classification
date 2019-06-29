@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import "/style/iconfont.wxss";
+@import '/component/wxParse/wxParse.wxss';
 .container {
   display: flex;
   flex-direction: column;
@@ -25,6 +26,7 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-bottom: 48px;
 }
 
 .disable {
@@ -43,4 +45,7 @@ page {
 }
 .color-other {
   color: #5f5e5e;
+}
+.color-other1 {
+  color: #ffe837;
 }

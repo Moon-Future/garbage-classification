@@ -1,0 +1,14 @@
+<view>
+  <view class="question-wrapper">
+    <view class="question-item" wx:for="{{ list }}" data-index="{{ index }}" wx:key="index" bindtap="goDetail">
+      <view class="question-item-image">
+        <image src="{{ item.image }}" />
+      </view>
+      <view class="question-item-info">
+        <text class="question-item-title color-title">{{ item.title }}</text>
+        <text class="question-item-answer color-answer">{{ item.answer }}</text>
+        <text class="question-item-summary color-summary">{{ item.summary }}</text>
+      </view>
+    </view>
+  </view>
+</view>

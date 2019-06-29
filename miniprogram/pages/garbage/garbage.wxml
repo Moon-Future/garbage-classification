@@ -17,6 +17,9 @@
     </view>
     <view class="search-none" wx:if="{{ searchContent.length === 0 && !searchFocus }}">
       <text class="search-none-msg">没有找到</text>
+      <navigator url="../addGarbage/addGarbage" open-type="navigate"  class="search-none-add">
+        <text>添加+</text>
+      </navigator>
       <!--
       <navigator url="../addGarbage/addGarbage" open-type="navigate"  class="search-none-add">
         <text>添加+</text>
@@ -46,4 +49,5 @@
     <text class="iconfont {{ tableShow ? 'icon-table' : 'icon-list' }}" bindtap="switchModel"></text>
     <text class="iconfont icon-top" wx:if="{{ topShow }}" bindtap="scrollToTop"></text>
   </view>
+  
 </view>
