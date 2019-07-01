@@ -8,14 +8,14 @@
   </view>
 
   <scroll-view scroll-y style="height:{{scrollviewHeight}}px" class="search-container" wx:if="{{ searchFlag }}">
-    <view wx:if="{{ !searchFocus }}" wx:for="{{ searchContent }}" data-detail="{{ item }}" wx:key="index" class="search-item" bindtap="goDetail">
+    <view wx:if="{{ !searchFocus && !loading }}" wx:for="{{ searchContent }}" data-detail="{{ item }}" wx:key="index" class="search-item" bindtap="goDetail">
       <image src="{{ item.image }}" />
       <view class="search-info">
         <text>{{ item.name }}</text>
         <text class="{{ garbageType[item.type].class }}">{{ garbageType[item.type].name }}</text>
       </view>
     </view>
-    <view class="search-record-wrapper" wx:if="{{ searchFocus }}">
+    <view class="search-record-wrapper" wx:if="{{ searchFocus && !loading }}">
       <view class="search-hot">
         <text class="search-hot-title">大家都在搜</text>
         <view class="search-hot-item-wrapper">
@@ -35,7 +35,7 @@
         </view>
       </view>
     </view>
-    <view class="search-none" wx:if="{{ searchContent.length === 0 && !searchFocus }}">
+    <view class="search-none" wx:if="{{ searchContent.length === 0 && !searchFocus && !loading }}">
       <text class="search-none-msg">没有找到</text>
       <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">添加+</button>
       <!--

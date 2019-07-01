@@ -28,7 +28,8 @@ Page({
     scrollTop: 0,
     searchHistory: [],
     hotSearch: [],
-    searchFirst: true
+    searchFirst: true,
+    loading: false
   },
 
   onLoad() {
@@ -39,7 +40,7 @@ Page({
 
     let wh = wx.getSystemInfoSync().windowHeight
     this.setData({
-      scrollviewHeight: wh - 50
+      scrollviewHeight: wh - 100
     })
     this.getData()
     this.getSearch()
@@ -77,7 +78,7 @@ Page({
     }).then(res => {
       const result = res.result
       this.setData({
-        garbageData: this.data.activeType == -1 && this.data.pageNum != 0 ? this.data.garbageData.concat(result.garbageData) : result.garbageData,
+        garbageData: this.data.pageNum != 0 ? this.data.garbageData.concat(result.garbageData) : result.garbageData,
         total: result.total
       })
       wx.hideLoading()
@@ -147,6 +148,7 @@ Page({
     }
     this.setData({
       keyWord: keyWord,
+      loading: true,
       searchFocus: false
     })
     wx.showLoading({
@@ -160,7 +162,8 @@ Page({
     }).then(res => {
       wx.hideLoading()
       this.setData({
-        searchContent: res.result.searchContent
+        searchContent: res.result.searchContent,
+        loading: false
       })
       if (this.data.searchContent.length === 0) {
         app.globalData.addName = keyWord.trim()
