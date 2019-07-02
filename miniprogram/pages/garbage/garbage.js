@@ -95,7 +95,7 @@ Page({
    */
   onPullDownRefresh: function () {
     wx.showToast({
-      title: '上拉刷新'
+      title: '下拉刷新'
     })
   },
 

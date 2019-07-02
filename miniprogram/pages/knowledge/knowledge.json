@@ -2,5 +2,6 @@
   "usingComponents": {
     "tab-bar": "../../component/tabBar/tabBar"
   },
-  "navigationBarTitleText": "小知识"
+  "navigationBarTitleText": "小知识",
+  "enablePullDownRefresh": true
 }

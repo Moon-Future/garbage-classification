@@ -126,9 +126,7 @@ Page({
       return false
     }
     that.setData({loading: true})
-    that.setData({
-      'subData.userInfo': app.globalData.userInfo
-    })
+    subData.user = app.globalData.userInfo
     wx.cloud.callFunction({
       name: 'addGarbage',
       data: subData,

@@ -37,6 +37,36 @@ Page({
     }
   },
 
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    var that = this
+    wx.stopPullDownRefresh({
+      success: function() {
+        that.setData({
+          pageNum: 0,
+          pageSize: 10
+        })
+        that.getData()
+      }
+    })
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    const pageNum = this.data.pageNum + 1
+    if (pageNum > Math.ceil(this.data.total / this.data.pageSize) - 1) {
+      return;
+    }
+    this.setData({
+      pageNum: pageNum
+    })
+    this.getData()
+  },
+
   getData() {
     wx.showLoading({
       title: '加载中'
