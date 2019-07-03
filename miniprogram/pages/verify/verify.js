@@ -1,4 +1,4 @@
-// miniprogram/pages/verify/verify.js
+var app = getApp()
 Page({
 
   /**
@@ -14,7 +14,8 @@ Page({
     garbageData: [],
     pageNum: 0,
     pageSize: 30,
-    total: 0
+    total: 0,
+    loading: false
   },
 
   /**
@@ -35,11 +36,15 @@ Page({
         selected: 2
       })
     }
+    this.getData()
   },
 
   getData() {
     wx.showLoading({
       title: '加载中'
+    })
+    this.setData({
+      loading: true
     })
     const condition = {verify: 0}
     wx.cloud.callFunction({
@@ -53,7 +58,8 @@ Page({
       const result = res.result
       this.setData({
         garbageData: this.data.activeType == -1 && this.data.pageNum != 0 ? this.data.garbageData.concat(result.garbageData) : result.garbageData,
-        total: result.total
+        total: result.total,
+        loading: false
       })
       wx.hideLoading()
     })
@@ -72,4 +78,15 @@ Page({
     })
     this.getData()
   },
+
+  getUserInfo(e) {
+    var userInfo = e.detail.userInfo;
+    if (userInfo) {
+      app.globalData.userInfo = userInfo;
+      app.globalData.addName = '';
+      wx.navigateTo({
+        url: '../addGarbage/addGarbage'
+      })
+    }
+  }
 })

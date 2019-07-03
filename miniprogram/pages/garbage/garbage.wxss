@@ -1,7 +1,3 @@
-Page {
-  height: 100%;
-}
-
 .green-earth {
   height: 100%;
   /* position: fixed;

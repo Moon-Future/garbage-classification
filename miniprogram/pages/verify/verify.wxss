@@ -28,3 +28,30 @@
   margin-left: 10px;
   color: #f3b41b;
 }
+
+.verify-none {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c0c0c0;
+}
+
+.add-icon-container {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  opacity: 0.5;
+  padding: 0;
+  line-height: initial;
+}
+
+.add-icon-wrapper {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+.add-icon-text {
+  font-size: 12px;
+}

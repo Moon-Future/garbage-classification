@@ -1,4 +1,4 @@
-<view class="verify-container">
+<view class="verify-container" wx:if="{{ garbageData.length !== 0 }}">
   <view class="verify-wrapper" wx:for="{{ garbageData }}" wx:key="index">
     <view class="verify-item-info">
       <image src="{{ item.image }}" />
@@ -10,3 +10,14 @@
     </view>
   </view>
 </view>
+
+<view wx:if="{{ !loading && garbageData.length === 0 }}" class="verify-none">
+  <text>暂无数据</text>
+</view>
+
+<button class="add-icon-container" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+  <view class="add-icon-wrapper">
+    <text class="iconfont icon-add"></text>
+    <text class="add-icon-text">我要添加</text>
+  </view>
+</button>
