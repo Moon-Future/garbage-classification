@@ -86,11 +86,11 @@
                 :value="item.value">
               </el-option>
             </el-select>
+            <span>{{ garbageType[submitData[field]] && garbageType[submitData[field]].image }}</span>
           </el-form-item>
           <el-form-item v-if="field === 'image'" label="图片">
             <img class="table-image" :src="submitData[field]" alt="">
           </el-form-item>
-
           <el-form-item v-if="field === 'name'" label="地址">
             <span>https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/garbage/{{ encodeURIComponent(submitData.name) }}.jpg</span>
           </el-form-item>

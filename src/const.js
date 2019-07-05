@@ -1,8 +1,8 @@
 const garbageType = {
-  0: {name: '可回收物', class: 'color-recyclable'},
-  1: {name: '厨余垃圾(湿垃圾)', class: 'color-kitchen'},
-  2: {name: '有害垃圾', class: 'color-harmful'},
-  3: {name: '其他垃圾(干垃圾)', class: 'color-other'}
+  0: {name: '可回收物', class: 'color-recyclable', image: 'https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/recyclable.jpg'},
+  1: {name: '厨余垃圾(湿垃圾)', class: 'color-kitchen', image: 'https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/wet(kitchen).jpg'},
+  2: {name: '有害垃圾', class: 'color-harmful', image: 'https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/harmful.jpg'},
+  3: {name: '其他垃圾(干垃圾)', class: 'color-other', image: 'https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/dry(other).jpg'}
 }
 
 const garbageTypeList = [
