@@ -14,6 +14,8 @@ router.post('/editData', async (ctx) => {
     const token = await getToken()
     let query = ''
     let url = ''
+    let _id = data.data._id
+    delete data.data._id
     delete data.data.edit
     switch(data.editType) {
       case 'add': 
@@ -24,13 +26,13 @@ router.post('/editData', async (ctx) => {
         url = cloud.url.add
         break
       case 'upd':
-        query = `db.collection("${collection}").where({_id: "${data.data._id}"}).update({
+        query = `db.collection("${collection}").doc("${_id}").update({
           data: ${JSON.stringify(data.data)}
         })`
         url = cloud.url.update
         break
       case 'del':
-        query = `db.collection("${collection}").where({_id: "${data.data._id}"}).remove()`
+        query = `db.collection("${collection}").doc("${_id}").remove()`
         url = cloud.url.delete
         break
     }

@@ -2,10 +2,10 @@
   <div class="login-container">
     <el-form :model="form" label-position="left" label-width="50px" size="small">
       <el-form-item label="账号">
-        <el-input v-model="form.account"></el-input>
+        <el-input v-model="form.account" @keyup.enter.native="login"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input type="password" v-model="form.password"></el-input>
+        <el-input type="password" v-model="form.password" @keyup.enter.native="login"></el-input>
       </el-form-item>
     </el-form>
     <el-button class="login-btn" type="primary" size="mini" @click="login">登陆</el-button>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-  const crypto = require('crypto')
   export default {
     data() {
       return {

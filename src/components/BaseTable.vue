@@ -15,10 +15,12 @@
         </el-option>
       </el-select>
     </div>
-    <div class="search-content" v-show="searchFlag && searchContent.length !== 0">
-        <div v-for="(item, i) in searchContent" :key="i">
-          <span @click="search(item.name)">{{ item.name }}</span>
-        </div>
+    <div class="search-content" v-show="searchFlag">
+        <template v-if="searchContent.length !== 0">
+          <div v-for="(item, i) in searchContent" :key="i">
+            <span @click="search(item.name)">{{ item.name }}</span>
+          </div>
+        </template>
     </div>
     <div class="el-table-container">
       <el-table
@@ -87,6 +89,10 @@
           </el-form-item>
           <el-form-item v-if="field === 'image'" label="图片">
             <img class="table-image" :src="submitData[field]" alt="">
+          </el-form-item>
+
+          <el-form-item v-if="field === 'name'" label="地址">
+            <span>https://green-earth-1255423800.cos.ap-chengdu.myqcloud.com/garbage/{{ encodeURIComponent(submitData.name) }}.jpg</span>
           </el-form-item>
         </el-form>
       </template>
@@ -307,9 +313,13 @@
   }
 
   .search-content {
-    display: flex;
     font-size: 12px;
     margin-bottom: 10px;
+    text-align: left;
+    div {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
     span {
       margin-right: 5px;
       padding: 0 3px;
